@@ -28,10 +28,8 @@ exports.registerUser = async (req, res) => {
         token: crypto.randomBytes(32).toString("hex"),
       }).save();
 
-      // const message = `${process.env.BASE_URL}/user/verify/${userRegistered._id}/${token.token}`;
-      const message = `We have sent an email to ${userRegistered.email} <br/>.You need to verify your email to continue click verify to continue <a href="${process.env.BASE_URL}/user/verify/${userRegistered._id}/${token.token}">verify</a> <br/> if you have not received the verification email,please check your "Spam" or "Bulk Email" folder.`;
+      const message = `We have sent an email to ${userRegistered.email}. You need to verify your email click link  ${process.env.BASE_URL}/user/verify/${userRegistered._id}/${token.token} to continue, if you have not received the verification email,please check your "Spam" or "Bulk Email" folder.`;
       await sendEmail(userRegistered.email, "Verify Email", message);
-  
 
       if (userRegistered) {
         res.status(201).json({
