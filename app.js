@@ -28,8 +28,8 @@ app.use("/api/v1", blogRoutes);
 app.use("/api/v1", category);
 app.use("/api/v1", commentRoutes);
 
-// app.get("/", (req, res) => {
-//   res.status(200).json({ message: "home route of pms is working fine" });
-// });
+app.get("*", (req, res) => {
+  res.status(200).json({ message: "server is running" });
+});
 
 module.exports = app;
